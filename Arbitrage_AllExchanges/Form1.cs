@@ -25,7 +25,7 @@ namespace Arbitrage_AllExchanges
         HttpClient clientTelegram = new HttpClient();
         DateTime baseDate = new DateTime(1970, 1, 1);
         string[] Access_id, Secret_key, Pass;
-        string owner, alarmChatId, market, HuobiPro_AccountId;
+        string owner, alarmChatId, TelegramBotId, market, HuobiPro_AccountId;
         int Findex, Lindex, HuobiPro_Precision, Kucoin_Precision;
         bool buttonFlag, sellParam;
         double Threshold, openDiff, closeDiff, amountT, maxDiff, minDiff;
@@ -252,6 +252,7 @@ namespace Arbitrage_AllExchanges
                 Pass[i] = res[++j];
             }
             alarmChatId = res[++j];
+            TelegramBotId = res[++j];
             buttonFlag = true;
             try
             {
@@ -1134,7 +1135,7 @@ namespace Arbitrage_AllExchanges
         {
             try
             {
-                await clientTelegram.GetStringAsync("https://api.telegram.org/bot" + "2135050880:AAGNiAJdwagxVP4Y3LBsHYqgBFUxk0Hnq8A"
+                await clientTelegram.GetStringAsync("https://api.telegram.org/bot" + TelegramBotId
                             + "/sendMessage?chat_id=" + chatId
                             + "&text=" + owner + Environment.NewLine
                             + DateTime.Now.ToString() + Environment.NewLine + s1);
